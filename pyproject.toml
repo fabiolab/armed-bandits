@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "bandits-manchots"
+version = "0.1.0"
+description = ""
+authors = ["Fabrice Depaulis <fabrice.depaulis@orange.com>"]
+readme = "README.md"
+packages = [{include = "bandits_manchots"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^1.10.8"
+rich = "^13.4.1"
+plotly = "^5.14.1"
+dash = "^2.10.2"
+pandas = "^2.0.2"
+jupyter = "^1.0.0"
+fastapi = "^0.97.0"
+uvicorn = "^0.22.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
