@@ -1,16 +1,17 @@
 from math import log, sqrt
-from typing import Iterator
+from typing import Iterator, List
 
 from bandit_system import BanditSystem
 
 
 class SuccessiveEliminationBandits(BanditSystem):
-    C = 1  # Inconnu (C>=1 : conservateur, C<1 : agressif )
-    DELTA = 0.05  # Probabilité (acceptée) de se tromper (petit : converge plus vite)
+    C = 1           # Unkonwn at start (C>=1 : conservative, C<1 : agressive )
+    DELTA = 0.05    # Accepted error probability (the less it is, the faster it converges)
 
     def __init__(self, n_actions: int):
         super().__init__(n_actions)
         self.selection = self._get_selection()
+        self.eliminated_action_ids: List[int] = []
 
     def select(self) -> int:
         next_action = next(self.selection)
@@ -18,7 +19,11 @@ class SuccessiveEliminationBandits(BanditSystem):
 
     def _get_selection(self) -> Iterator[int]:
         while True:
-            actions_ids = [action.action_id for action in self.actions]
+            actions_ids = [
+                action.action_id
+                for action in self.actions
+                if action.action_id not in self.eliminated_action_ids
+            ]
             for action_id in actions_ids:
                 yield action_id
 
@@ -33,8 +38,8 @@ class SuccessiveEliminationBandits(BanditSystem):
             / best_action.played
         )
 
-        self.actions = [
-            action
+        self.eliminated_action_ids = [
+            action.action_id
             for action in self.actions
-            if (best_action.mean_reward - action.mean_reward) < 2 * epsilon_t
+            if (best_action.mean_reward - action.mean_reward) >= 2 * epsilon_t
         ]
