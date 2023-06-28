@@ -1,6 +1,6 @@
 from math import log, sqrt
 
-from bandit_system import ActionHistory, BanditSystem
+from src.bandit_system import ActionHistory, BanditSystem
 
 
 class UCBBandits(BanditSystem):

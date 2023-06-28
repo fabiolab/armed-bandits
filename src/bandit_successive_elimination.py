@@ -1,7 +1,7 @@
 from math import log, sqrt
 from typing import Iterator, List
 
-from bandit_system import BanditSystem
+from src.bandit_system import BanditSystem
 
 
 class SuccessiveEliminationBandits(BanditSystem):

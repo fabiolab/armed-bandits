@@ -12,8 +12,8 @@ BEST_ACTION_DELTA = 0.2
 WINDOW_SIZE = 500
 
 bandits = RandomBandits(NB_ACTIONS)
-# bandits = UCBBandits(NB_ACTIONS)
-# bandits = SuccessiveEliminationBandits(NB_ACTIONS)
+bandits = UCBBandits(NB_ACTIONS)
+bandits = SuccessiveEliminationBandits(NB_ACTIONS)
 
 
 def play(action_id: int) -> int:

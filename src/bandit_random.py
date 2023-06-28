@@ -1,6 +1,6 @@
 from random import randint
 
-from bandit_system import BanditSystem
+from src.bandit_system import BanditSystem
 
 
 class RandomBandits(BanditSystem):
