@@ -2,7 +2,7 @@ from src.bandit_random import RandomBandits
 from src.bandit_successive_elimination import SuccessiveEliminationBandits
 from src.bandit_ucb import UCBBandits
 from src.utils import display_data, update_viz_data
-from numpy.random import binomial
+from numpy.random import binomial, seed
 
 
 NB_ACTIONS = 5
@@ -12,9 +12,10 @@ BEST_ACTION_DELTA = 0.2
 WINDOW_SIZE = 500
 
 bandits = RandomBandits(NB_ACTIONS)
-bandits = UCBBandits(NB_ACTIONS)
-bandits = SuccessiveEliminationBandits(NB_ACTIONS)
+# bandits = UCBBandits(NB_ACTIONS)
+# bandits = SuccessiveEliminationBandits(NB_ACTIONS)
 
+seed(1)
 
 def play(action_id: int) -> int:
     # Simulate a user interaction with a random reward
