@@ -16,5 +16,5 @@ The project is built with poetry and you will need to install it too
 ```shell
 > poetry install
 > poetry shell
-> python main.py
+> python simulator.py
 ```
